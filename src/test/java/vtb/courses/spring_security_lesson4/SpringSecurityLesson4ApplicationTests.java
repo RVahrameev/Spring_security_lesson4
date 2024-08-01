@@ -81,31 +81,7 @@ class SpringSecurityLesson4ApplicationTests {
 		FileWriter tokenWriter = new FileWriter("./src/main/resources/alice.token", false);
 		tokenWriter.write(signedJWT.serialize());
 		tokenWriter.close();
-
-
-		// Output the private and public RSA JWK parameters
-//		System.out.println(jwk);
-
-		// Output the public RSA JWK parameters only
-//		System.out.println(jwk.toPublicJWK());
 	}
 
-	@Test
-	public void RsaKeyManager() {
-		char[] buff = new char[20000];
-		try {
-			FileReader jsonReader = new FileReader("./src/main/resources/keyset.json");
-			int jsonLen = jsonReader.read(buff, 0, 20000);
-			String jsonString = String.valueOf(buff, 0, jsonLen);
-			Map<String, Object> keys = JSONObjectUtils.parse(jsonString);
-			System.out.println("class = " + keys.get("keys").getClass().getName());
-		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage());
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-		}
 
-	}
 }
